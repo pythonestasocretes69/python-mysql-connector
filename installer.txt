@@ -1,0 +1,108 @@
+drop database business;
+create database business;
+
+use business;
+
+create table products
+(
+Product_Key integer primary key,
+Name char(20),
+GST_Slab integer,
+Min_Stock integer,
+Max_stock integer );
+
+insert into products
+values(6094,'Amoxicillin(250mg)',5,120,420);
+insert into products
+values(3125,'Warfarin(2.5mg)',5,125,425);
+insert into products
+values(3212,'Temozolomide(100mg)',5,130,430);
+insert into products
+values(2883,'Saquinavir(200mg)',10,135,435);
+insert into products
+values(3722,'Azithromycin(600mg)',5,140,440);
+insert into products
+values(9413,'Posaconazole(100mg)',5,145,445);
+insert into products
+values(9428,'Rituximab(500ml)',5,120,420);
+insert into products
+values(3627,'Promethazine(25mg)',5,125,425);
+insert into products
+values(5216,'Nelfinavir(250mg)',5,130,430);
+insert into products
+values(8609,'Irinotecan(100ml)',5,135,435);
+
+create table batch_master
+( 
+product_key integer,
+batch_key integer NOT NULL primary key,
+stock integer,
+manufacture_date date,
+expiary_date date,
+cost integer check(cost>0),
+check ( manufacture_date < expiary_date),
+foreign key (product_key) references Products(product_key)
+on delete cascade on update cascade );
+ 
+insert into batch_master values
+(6094,56546,122,'2021-02-01','2025-02-01',1000);
+insert into batch_master values
+(3125,46869,285,'2021-05-01','2025-05-01',6520);
+insert into batch_master values
+(3212,54498,273,'2021-06-01','2025-06-01',9800);
+insert into batch_master values
+(2883,54654,246,'2021-04-01','2025-04-01',1500);
+insert into batch_master values
+(3722,65292,425,'2021-11-01','2025-11-01',3000);
+insert into batch_master values
+(9413,54988,439,'2021-12-01','2025-12-01',4500);
+insert into batch_master values
+(9428,98149,341,'2021-03-01','2025-03-01',3100);
+insert into batch_master values
+(3627,81498,319,'2021-02-01','2025-02-01',2990);
+insert into batch_master values
+(5216,71981,294,'2021-07-01','2025-07-01',6520);
+insert into batch_master values
+(8609,14785,428,'2021-01-01','2025-01-01',2000);
+
+create table suppliers 
+(
+supp_key integer primary key, 
+name char(25), 
+phno char(10),
+amount_due integer );
+
+insert into suppliers values
+(6555,'Healthly.pvt.ltd',6263972722,4500);
+insert into suppliers values
+(6546,'Synergy.pvt.ltd',5791687397,7000);
+insert into suppliers values
+(5465,'Greenity.pvt.ltd',6703732358,1000);
+insert into suppliers values
+(8989,'Stark.pvt.ltd',2707384116,5000);
+insert into suppliers values
+(8948,'Roger.pvt.ltd',2418201660,9000);
+insert into suppliers values
+(4487,'Purity.pvt.ltd',7132541383,3600);
+
+create table customers(
+custom_key integer not null primary key,
+name char(25),
+phno char(10),
+credit integer );
+
+insert into customers values
+(8116,'nimesh.pvt.ltd',8728023872,1500);
+insert into customers values
+(6486,'ganesh.pvt.ltd',2140914861,2000);
+insert into customers values
+(6293,'appolo meds.pvt.ltd',3072717900,7500);
+insert into customers values
+(4461,'green meds.pvt.ltd',5169549780,3000);
+insert into customers values
+(7131,'youcare meds.pvt.ltd',5892925113,2500);
+
+select * from products;
+select * from batch_master;
+select * from suppliers;
+select * from customers;

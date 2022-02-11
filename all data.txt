@@ -1,0 +1,4 @@
+select * from products;
+select * from batch_master;
+select * from suppliers;
+select * from customers;
