@@ -1,4 +1,5 @@
-#medicine stock managers                   
+#medicine stock managers       
+
 import mysql.connector as sqlator
 import random
 def stop() :                                                                                           #temporary function
