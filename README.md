@@ -5,4 +5,4 @@ This is a very basic app and has an insatller.txt file to first create a databas
 Also you can copy the responce in MySql client and use it in Time taken file to check how much time did entire installation process took.
 
 # Caution
-Before running main.py enter your passwd arguement in the code (the line is turned into a comment)
+Before running main.py enter your passwd arguement in the code (the line is turned into a comment at line 138)
