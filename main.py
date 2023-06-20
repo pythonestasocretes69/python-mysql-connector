@@ -135,7 +135,7 @@ def checkout(pk,bk):
     cursor.execute('update suppliers set amount_due ={} where supp_key = {}'.format(credit,custom_key))
     mycon.commit()
 
-mycon = sqlator.connect(host='localhost', user='root', passwd='Plank#6.626', database='business')
+#<--delete this hash and enter your passwd  mycon = sqlator.connect(host='localhost', user='root', passwd=<Your Password>, database='business')
 if mycon.is_connected():
     print('connected')                                                                         # basic connection   object = mycon
 
